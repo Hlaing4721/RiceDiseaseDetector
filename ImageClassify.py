@@ -1,7 +1,7 @@
 import keras
 from PIL import Image, ImageOps
 import numpy as np
-
+import streamlit as st
 
 def teachable_machine_classification(img, weights_file):
     # Load the model
@@ -25,8 +25,8 @@ def teachable_machine_classification(img, weights_file):
     # run the inference
     prediction = model.predict(data)
     return np.argmax(prediction) # return position of the highest probability
-
-uploaded_file = st.file_uploader("Choose rice photo ...", type="jpg")
+st.head("စပါးပိုးတွေကို ရှာကြည့်ရအောင်")
+uploaded_file = st.file_uploader("ပုံထည့်ပေးပါခင်ဗျာ ...", type="jpg")
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption='Uploaded MRI.', use_column_width=True)
